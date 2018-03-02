@@ -1,0 +1,75 @@
+<template name="Boulangerie">
+    <div class="resto" id="Boulangerie">
+        <h1 class = "titre">Boulangerie</h1>
+        <p>tel : 0494753619</p>
+        <p>adresse : 2 rue tata , Lyon</p>
+        <h4 class = "titre">Menus</h4>
+        <ul>
+            <li><button onclick="javascript:affich('information1');">Pains</button></li>
+            <dd id="information1">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/boulangerie-pain.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Boulangerie-pains"></p><input type="hidden" id="pain" value="2"><input onclick="commander('pain')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+            <div onload="initialiser()" id="carte" style="width:50%; height:63%; margin-left: auto; margin-right: auto;"></div>
+
+            <li><button onclick="javascript:affich('information2');">Sandwichs</button></li>
+            <dd id="information2">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/boulangerie-sandwich.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Boulangerie-sandwichs"></p><input type="hidden" id="sandwich" value="4"><input onclick="commander('sandwich')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information3');">Patisseries</button></li>
+            <dd id="information3">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/boulangerie-patisserie.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Boulangerie-Patisseries"></p><input type="hidden" id="patisserie" value="2"><input onclick="commander('patisserie')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information4');">Sucreries</button></li>
+            <dd id="information4">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/boulangerie-sucre.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Boulangerie-Sucreries"></p><input type="hidden" id="bonbon" value="1"><input onclick="commander('bonbon')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var prixpain = 2;
+        var prixsandwich = 4;
+        var prixpatisserie = 2;
+        var prixbonbon = 1;
+
+        window.onload=affich();
+        function affich(id)
+        {
+            var d = document.getElementById(id);
+            for (var i = 1; i<=10; i++)
+            {
+                if (document.getElementById('information'+i)) {document.getElementById('information'+i).style.display='none';}
+            }
+            if (d) {d.style.display='block';}
+        }
+        document.getElementById("Boulangerie-pains").innerHTML=prixpain + "€";
+        document.getElementById("Boulangerie-sandwichs").innerHTML=prixsandwich + "€";
+        document.getElementById("Boulangerie-Patisseries").innerHTML=prixpatisserie + "€";
+        document.getElementById("Boulangerie-Sucreries").innerHTML=prixbonbon + "€";
+
+        function commander(id)
+        {
+            var prix = document.getElementById(id).value;
+            document.getElementById('commande').insertRow().insertCell().innerHTML=id + " " + prix + "€";
+        }
+    </script>
+
+</template>

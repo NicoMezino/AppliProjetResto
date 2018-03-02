@@ -1,0 +1,74 @@
+<template name="Pizzeria">
+    <div class="resto" id="Pizzeria">
+        <h1 class = "titre">Pizzeria</h1>
+        <p>tel : 04856948</p>
+        <p>adresse : 1 Rue toto, Lyon</p>
+        <h4 class = "titre">Menus :</h4>
+        <ul>
+            <li ><button onclick="javascript:affich('information1');">Pizza simples</button></li>
+            <dd id="information1">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/pizza-simple.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Pizzeria-simples"></p><input type="hidden" id="pizzasimple" value="8"><input input onclick="commander('pizzasimple')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+            <div onload="initialiser()" id="carte" style="width:50%; height:63%; margin-left: auto; margin-right: auto;"></div>
+
+            <li><button onclick="javascript:affich('information2');">avec fruit de mer</button></li>
+            <dd id="information2">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/Pizza-fruitdemer.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Pizzeria-fruitmer"></p><input type="hidden" id="pizzamer" value="10"><input input onclick="commander('pizzamer')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information3');">Gourmandes</button></li>
+            <dd id="information3">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/pizza-gourmand.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Pizzeria-gourmand"></p><input type="hidden" id="pizzagour" value="9"><input input onclick="commander('pizzagour')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information4');">Végan</button></li>
+            <dd id="information4">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/pizza-vegan.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Pizzeria-vegan"></p><input type="hidden" id="pizzagan" value="8"><input input onclick="commander('pizzagan')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var prixpizzasimple = 8;
+        var prixpizzamer = 10;
+        var prixpizzagour = 9;
+        var prixpizzagan = 8;
+        window.onload=affich();
+        function affich(id)
+        {
+            var d = document.getElementById(id);
+            for (var i = 1; i<=10; i++)
+            {
+                if (document.getElementById('information'+i)) {document.getElementById('information'+i).style.display='none';}
+            }
+            if (d) {d.style.display='block';}
+        }
+        document.getElementById("Pizzeria-simples").innerHTML=prixpizzasimple + "€";
+        document.getElementById("Pizzeria-fruitmer").innerHTML=prixpizzamer + "€";
+        document.getElementById("Pizzeria-gourmand").innerHTML=prixpizzagour + "€";
+        document.getElementById("Pizzeria-vegan").innerHTML=prixpizzagan + "€";
+
+        function commander(id)
+        {
+            var prix = document.getElementById(id).value;
+            document.getElementById('commande').insertRow().insertCell().innerHTML=id + " " + prix + "€";
+        }
+    </script>
+
+</template>

@@ -1,0 +1,74 @@
+<template name="Macdo">
+    <div class="resto" id="Macdo">
+        <h1 class = "titre">Macdo</h1>
+        <p>tel : 0495874261</p>
+        <p>adresse : 4 rue toto Lyon</p>
+        <h4 class = "titre">Menus :</h4>
+        <ul>
+            <li ><button onclick="javascript:affich('information1');">Bigmac</button></li>
+            <dd id="information1">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/bigmac.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Macdo-bigmac"></p><input type="hidden" id="bigmac" value="6"><input input onclick="commander('bigmac')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+            <div onload="initialiser()" id="carte" style="width:50%; height:63%; margin-left: auto; margin-right: auto;"></div>
+
+            <li><button onclick="javascript:affich('information2');">MacFirst</button></li>
+            <dd id="information2">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/macfirst.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Macdo-macfirst"></p><input type="hidden" id="macfirst" value="5"><input input onclick="commander('macfirst')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information3');">McWrapp</button></li>
+            <dd id="information3">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/mcwrapp.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Macdo-mcwrapp"></p><input type="hidden" id="mcwrapp" value="6"><input input onclick="commander('mcwrapp')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information4');">Signature</button></li>
+            <dd id="information4">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/signature.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Macdo-signature"></p><input type="hidden" id="sign" value="999"><input input onclick="commander('sign')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var prixbigmac = 6;
+        var prixmcfirst = 5;
+        var prixwrapp = 6;
+        var prixsign = 999;
+        window.onload=affich();
+        function affich(id)
+        {
+            var d = document.getElementById(id);
+            for (var i = 1; i<=10; i++)
+            {
+                if (document.getElementById('information'+i)) {document.getElementById('information'+i).style.display='none';}
+            }
+            if (d) {d.style.display='block';}
+        }
+        document.getElementById("Macdo-bigmac").innerHTML=prixbigmac + "€";
+        document.getElementById("Macdo-macfirst").innerHTML=prixmcfirst + "€";
+        document.getElementById("Macdo-mcwrapp").innerHTML=prixwrapp + "€";
+        document.getElementById("Macdo-signature").innerHTML=prixsign + "€";
+
+        function commander(id)
+        {
+            var prix = document.getElementById(id).value;
+            document.getElementById('commande').insertRow().insertCell().innerHTML=id + " " + prix + "€";
+        }
+    </script>
+
+</template>

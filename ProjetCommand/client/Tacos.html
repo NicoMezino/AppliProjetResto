@@ -1,0 +1,74 @@
+<template name="Tacos">
+    <div class="resto" id="Tacos">
+        <h1 class = "titre">Tacos</h1>
+        <p>tel : 04684952</p>
+        <p>adresse : 3 rue toto, Lyon</p>
+        <h4 class = "titre">Menus :</h4>
+        <ul>
+            <li ><button onclick="javascript:affich('information1');">Kebab</button></li>
+            <dd id="information1">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/tacos-kebab.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Tacos-kebab"></p><input type="hidden" id="kebab" value="6"><input onclick="commander('kebab')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+            <div onload="initialiser()" id="carte" style="width:50%; height:63%; margin-left: auto; margin-right: auto;"></div>
+
+            <li><button onclick="javascript:affich('information2');">Escalope</button></li>
+            <dd id="information2">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/tacos-escalope.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Tacos-escalope"></p><input type="hidden" id="escalope" value="5"><input onclick="commander('escalope')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information3');">Maxi Taco</button></li>
+            <dd id="information3">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/tacos-maxi.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Tacos-maxi"></p><input type="hidden" id="maxi" value="8"><input onclick="commander('maxi')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+
+            <li><button onclick="javascript:affich('information4');">Boisson</button></li>
+            <dd id="information4">
+                <ul>
+                    <img class="image" style="display: block;margin-left: auto;margin-right: auto;" src="/images/tacos-boisson.jpg">
+                    <li>Description : </li>
+                    <li>Prix : <p id="Tacos-boisson"></p><input type="hidden" id="boisson" value="2"><input onclick="commander('boisson')" type="submit" name="commander" value="Commander"></li>
+                </ul>
+            </dd>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        var prixkebab = 6;
+        var prixescalope = 5;
+        var prixmaxi = 8;
+        var prixboisson = 2;
+        window.onload=affich();
+        function affich(id)
+        {
+            var d = document.getElementById(id);
+            for (var i = 1; i<=10; i++)
+            {
+                if (document.getElementById('information'+i)) {document.getElementById('information'+i).style.display='none';}
+            }
+            if (d) {d.style.display='block';}
+        }
+        document.getElementById("Tacos-kebab").innerHTML=prixkebab + "€";
+        document.getElementById("Tacos-escalope").innerHTML=prixescalope + "€";
+        document.getElementById("Tacos-maxi").innerHTML=prixmaxi + "€";
+        document.getElementById("Tacos-boisson").innerHTML=prixboisson + "€";
+
+        function commander(id)
+        {
+            var prix = document.getElementById(id).value;
+            document.getElementById('commande').insertRow().insertCell().innerHTML=id + " " + prix + "€";
+        }
+    </script>
+
+</template>
