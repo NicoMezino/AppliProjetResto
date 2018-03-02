@@ -1,1 +1,8 @@
 
+-Créer un projet meteor Nommé "ProjetCommand"
+-déposer tous les dossier dans ce projet
+
+modules : 
+-meteor npm install --save react react-dom
+-meteor add react-meteor-data
+meteor add accounts-ui accounts-password
